@@ -77,13 +77,18 @@ public class Enigma6 extends JPanel {
 		
 		JLabel lblEscolhaASequncia = new JLabel("Escolha a sequ\u00EAncia");
 		lblEscolhaASequncia.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblEscolhaASequncia.setBounds(46, 113, 175, 20);
+		lblEscolhaASequncia.setBounds(52, 113, 175, 20);
 		add(lblEscolhaASequncia);
 		
-		JLabel lblCorreta = new JLabel("correta:");
+		JLabel lblCorreta = new JLabel("correta dos valores ");
 		lblCorreta.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblCorreta.setBounds(46, 149, 69, 20);
+		lblCorreta.setBounds(52, 135, 227, 20);
 		add(lblCorreta);
+		
+		JLabel lblTabela = new JLabel("da Tabela-Verdade");
+		lblTabela.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblTabela.setBounds(52, 158, 227, 20);
+		add(lblTabela);
 
 	}
 	private static class __Tmp {
