@@ -43,26 +43,36 @@ public class Enigma6 extends JPanel {
 		add(list);
 		
 		JComboBox cBxPrimeiraLinha = new JComboBox();
-		cBxPrimeiraLinha.setModel(new DefaultComboBoxModel(new String[] {"Selecione", "V  V  V  F  F  F  V ", "V  V  F  V  F  V  V ", "V  F  V  V  F  V  V ", "F  V  V  V  V  F  V ", "V  V  V  V  V  V  V "}));
+		cBxPrimeiraLinha.setFont(new Font("Tahoma", Font.BOLD, 16));
+		cBxPrimeiraLinha.setForeground(Color.BLUE);
+		cBxPrimeiraLinha.setModel(new DefaultComboBoxModel(new String[] {"Selecione linha 1", "V  V  V  F  F  F  V ", "V  V  F  V  F  V  V ", "V  F  V  V  F  V  V ", "F  V  V  V  V  F  V ", "V  V  V  V  V  V  V "}));
 		cBxPrimeiraLinha.setBounds(256, 71, 167, 26);
 		add(cBxPrimeiraLinha);
 		
 		JComboBox cBxPrimeiraLinha2 = new JComboBox();
-		cBxPrimeiraLinha2.setModel(new DefaultComboBoxModel(new String[] {"Selecione", "V  V  V  V  V  V  V ", "V  F  V  V  V  V  V ", "V  F  V  V  F  V  V ", "V  V  F  V  V  V  V ", "V  F  F  V  V  V  F "}));
+		cBxPrimeiraLinha2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		cBxPrimeiraLinha2.setForeground(Color.BLUE);
+		cBxPrimeiraLinha2.setModel(new DefaultComboBoxModel(new String[] {"Selecione linha 2", "V  V  V  V  V  V  V ", "V  F  V  V  V  V  V ", "V  F  V  V  F  V  V ", "V  V  F  V  V  V  V ", "V  F  F  V  V  V  F "}));
 		cBxPrimeiraLinha2.setBounds(256, 113, 167, 26);
 		add(cBxPrimeiraLinha2);
 		
 		JComboBox cBxPrimeiraLinha3 = new JComboBox();
-		cBxPrimeiraLinha3.setModel(new DefaultComboBoxModel(new String[] {"Selecione", "V  F  V  V  F  V  V ", "V  V  V  V  F  V  V ", "V  V  F  F  V  V  V ", "F  F  V  V  F  V  V ", "V  V  V  V  V  V  V "}));
+		cBxPrimeiraLinha3.setForeground(Color.BLUE);
+		cBxPrimeiraLinha3.setFont(new Font("Tahoma", Font.BOLD, 16));
+		cBxPrimeiraLinha3.setModel(new DefaultComboBoxModel(new String[] {"Selecione linha 3", "V  F  V  V  F  V  V ", "V  V  V  V  F  V  V ", "V  V  F  F  V  V  V ", "F  F  V  V  F  V  V ", "V  V  V  V  V  V  V "}));
 		cBxPrimeiraLinha3.setBounds(256, 155, 167, 26);
 		add(cBxPrimeiraLinha3);
 		
-		JComboBox cBxPrimeiraLinha3_1 = new JComboBox();
-		cBxPrimeiraLinha3_1.setModel(new DefaultComboBoxModel(new String[] {"Selecione", "F  F  F  V  F   F   F ", "V  F  V  V  V  V  F ", "V  V  F  V  F  F  F ", "V  V  F  F  V  F  V ", "V  F  V  F  V  V  F "}));
-		cBxPrimeiraLinha3_1.setBounds(256, 197, 167, 26);
-		add(cBxPrimeiraLinha3_1);
+		JComboBox cBxPrimeiraLinha4 = new JComboBox();
+		cBxPrimeiraLinha4.setFont(new Font("Tahoma", Font.BOLD, 16));
+		cBxPrimeiraLinha4.setForeground(Color.BLUE);
+		cBxPrimeiraLinha4.setModel(new DefaultComboBoxModel(new String[] {"Selecione linha 4", "F  F  F  V  F   F   F ", "V  F  V  V  V  V  F ", "V  V  F  V  F  F  F ", "V  V  F  F  V  F  V ", "V  F  V  F  V  V  F "}));
+		cBxPrimeiraLinha4.setBounds(256, 197, 167, 26);
+		add(cBxPrimeiraLinha4);
 		
 		JButton btnSelecao = new JButton("Ser\u00E1?");
+		btnSelecao.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnSelecao.setForeground(Color.RED);
 		btnSelecao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			//	if (cBxPrimeiraLinha.getSelectedIndex() == 5 && cBxPrimeiraLinha2.getSelectedIndex() == 5 &&
@@ -75,17 +85,20 @@ public class Enigma6 extends JPanel {
 		btnSelecao.setBounds(287, 239, 115, 29);
 		add(btnSelecao);
 		
-		JLabel lblEscolhaASequncia = new JLabel("Escolha a sequ\u00EAncia");
-		lblEscolhaASequncia.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblEscolhaASequncia.setBounds(52, 113, 175, 20);
-		add(lblEscolhaASequncia);
+		JLabel lblSequencia = new JLabel("Escolha a sequ\u00EAncia");
+		lblSequencia.setForeground(Color.RED);
+		lblSequencia.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblSequencia.setBounds(52, 113, 175, 20);
+		add(lblSequencia);
 		
 		JLabel lblCorreta = new JLabel("correta dos valores ");
+		lblCorreta.setForeground(Color.RED);
 		lblCorreta.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblCorreta.setBounds(52, 135, 227, 20);
 		add(lblCorreta);
 		
 		JLabel lblTabela = new JLabel("da Tabela-Verdade");
+		lblTabela.setForeground(Color.RED);
 		lblTabela.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblTabela.setBounds(52, 158, 227, 20);
 		add(lblTabela);
