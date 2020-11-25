@@ -1,58 +1,47 @@
-package Intregavel2;
+package Modulo_Completo;
+import java.util.ArrayList;
 
-public class ModuloM04 implements ModuleInterface  {
+public class ModuloM04 implements ModuleInterface {
+	
+	private ArrayList<Enigma> enigmaList = new ArrayList<Enigma>();
+	private BombInterface bomb;
+	
+	public ModuloM04() {
+		this.enigmaList[0] = new ReasoningLogic();
+		this.enigmaList[1] = new ReasoningLogic();
+		this.enigmaList[2] = new PropositionalLogic();
+		this.enigmaList[3] = new PropositionalLogic();
+	}
+	
+	public int getHowManyExecutions(byte enigma) 
+	{
+		return this.enigmaList[enigma].getExecutionsCount();
+	}
+	
+	public int getHowManyRightAnswers(byte enigma)
+	{
+		return this.enigmaList[enigma].getRightAnswersCount();
+	}
+	
+	public int getHowManyActivations()
+	{
+		return this.enigmaList[enigma].getActivationsCount();
+	}
+	
+	public int getHowManyWrongAnswers(byte enigma)
+	{
+		return this.enigmaList[enigma].getWrongAnswersCount();
+	}
+	
+	public Enigma getEnigmaByIndex(byte enigma)
+	{
+		return this.enigmaList[enigma];
+	}
+	
+	public void attach(BombInterface bomb)
+	{
+		this.bomb = bomb;
+	}
+	
 
-	//Atributos
-	private boolean isDefused;
-	private int howManyActivations;
-	private int howManyExecutions;
-	private int howManyRigthAnswers;
-	private int howManyWrongAnswers;
-	
-	
-    //container
-	String[] enigma = new String[6];
-	
-	//Construtor
-	public ModuloM04(boolean isDefused, int howManyActivations, int howManyExecutions, int howManyRigthAnswers,
-			int howManyWrongAnswers) {
-		super();
-		this.setDefused (isDefused);
-		this.setHowManyActivations (howManyActivations);
-		this.setHowManyExecutions (howManyExecutions);
-		this.setHowManyRigthAnswers (howManyRigthAnswers);
-		this.setHowManyWrongAnswers (howManyWrongAnswers);
-	}
-	
-	//Metodos
-	public boolean isDefused() {
-			return isDefused;
-		}
-	public void setDefused(boolean isDefused) {
-		this.isDefused = isDefused;
-	}
-	public int getHowManyActivations() {
-		return howManyActivations;
-	}
-	public void setHowManyActivations(int howManyActivations) {
-		this.howManyActivations = howManyActivations;
-	}
-	public int getHowManyExecutions() {
-		return howManyExecutions;
-	}
-	public void setHowManyExecutions(int howManyExecutions) {
-		this.howManyExecutions = howManyExecutions;
-	}
-	public int getHowManyRigthAnswers() {
-		return howManyRigthAnswers;
-	}
-	public void setHowManyRigthAnswers(int howManyRigthAnswers) {
-		this.howManyRigthAnswers = howManyRigthAnswers;
-	}
-	public int getHowManyWrongAnswers() {
-		return howManyWrongAnswers;
-	}
-	public void setHowManyWrongAnswers(int howManyWrongAnswers) {
-		this.howManyWrongAnswers = howManyWrongAnswers;
-	}
 }

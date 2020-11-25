@@ -1,4 +1,4 @@
-package Intregavel2;
+package Modulo_Completo;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -12,6 +12,7 @@ import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import javax.swing.ButtonGroup;
 
 public class Enigma2 extends JPanel {
 	
@@ -21,6 +22,7 @@ public class Enigma2 extends JPanel {
 	 * Create the panel.
 	 */
 	public Enigma2() {
+		setBackground(new Color(255, 20, 147));
 		setForeground(new Color(255, 0, 255));
 		setLayout(null);
 		
@@ -59,10 +61,42 @@ public class Enigma2 extends JPanel {
 		rdbtnNewRadioButton_4.setBounds(144, 240, 223, 29);
 		add(rdbtnNewRadioButton_4);
 		
-		JButton btnNewButton = new JButton("Desativar");
+		
+		ButtonGroup bg = new ButtonGroup();
+		bg.add(rdbtnNewRadioButton);
+		bg.add(rdbtnNewRadioButton_1);
+		bg.add(rdbtnNewRadioButton_2 );
+		bg.add(rdbtnNewRadioButton_3);
+		bg.add(rdbtnNewRadioButton_4);
+		
+		
+		
+		
+		JLabel lblNewLabel = new JLabel("Armado");
+		lblNewLabel.setBounds(347, 11, 48, 14);
+		add(lblNewLabel);
+		
+		
+		JButton btnNewButton = new JButton("Desarmar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ReasoningLogic enigma2 = new ReasoningLogic();
+				enigma2.IncrementActivations();
+				if(rdbtnNewRadioButton.isSelected()) {
+					enigma2.IncrementRightAnsweres();
+					lblNewLabel.setText("Desarmado");
+				}else {
+					enigma2.IncrementWrongAnsweres();
+				}
+			}
+		});
 		btnNewButton.setIcon(new ImageIcon(Enigma2.class.getResource("/Imagens/hamburger1.jpg")));
 		btnNewButton.setBounds(15, 77, 110, 202);
 		add(btnNewButton);
+		
+	
+		
+		
 
 	}
 }

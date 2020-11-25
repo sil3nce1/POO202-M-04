@@ -1,4 +1,4 @@
-package Intregavel3;
+package Modulo_Completo;
 
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -70,20 +70,7 @@ public class Enigma6 extends JPanel {
 		cBxPrimeiraLinha4.setBounds(256, 197, 167, 26);
 		add(cBxPrimeiraLinha4);
 		
-		JButton btnSelecao = new JButton("Ser\u00E1?");
-		btnSelecao.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnSelecao.setForeground(Color.RED);
-		btnSelecao.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			//	if (cBxPrimeiraLinha.getSelectedIndex() == 5 && cBxPrimeiraLinha2.getSelectedIndex() == 5 &&
-			//			cBxPrimeiraLinha3.getSelectedIndex() == 4) && cBxPrimeiraLinha4.getSelectedIndex() == 2)
-					    
-			//		else
-                    
-			}
-		});
-		btnSelecao.setBounds(287, 239, 115, 29);
-		add(btnSelecao);
+		
 		
 		JLabel lblSequencia = new JLabel("Escolha a sequ\u00EAncia");
 		lblSequencia.setForeground(Color.RED);
@@ -102,6 +89,30 @@ public class Enigma6 extends JPanel {
 		lblTabela.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblTabela.setBounds(52, 158, 227, 20);
 		add(lblTabela);
+		
+		JLabel lblNewLabel = new JLabel("Armado");
+		lblNewLabel.setBounds(32, 35, 48, 14);
+		add(lblNewLabel);
+		
+		JButton btnSelecao = new JButton("Ser\u00E1?");
+		btnSelecao.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnSelecao.setForeground(Color.RED);
+		btnSelecao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PropositionalLogic enigma6 = new PropositionalLogic();
+				enigma6.IncrementActivations();
+			if (cBxPrimeiraLinha.getSelectedIndex() == 5 && cBxPrimeiraLinha2.getSelectedIndex() == 5 &&
+						cBxPrimeiraLinha3.getSelectedIndex() == 4 && cBxPrimeiraLinha4.getSelectedIndex() == 2){
+			enigma6.IncrementRightAnsweres();
+			lblNewLabel.setText("Desarmado");
+		}else {
+			enigma6.IncrementWrongAnsweres();
+		}		
+				
+			}
+		});
+		btnSelecao.setBounds(287, 239, 115, 29);
+		add(btnSelecao);
 
 	}
 	private static class __Tmp {

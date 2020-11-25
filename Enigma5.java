@@ -1,4 +1,4 @@
-package Intregavel3;
+package Modulo_Completo;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -64,16 +64,30 @@ public class Enigma5 extends JPanel {
 		lblIndiqueANumerao.setBounds(80, 28, 319, 57);
 		add(lblIndiqueANumerao);
 		
+		JLabel lblNewLabel = new JLabel("Armado");
+		lblNewLabel.setBounds(22, 28, 48, 14);
+		add(lblNewLabel);
+		
 		JButton btnSlecionar = new JButton("Live our Die");
 		btnSlecionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+				PropositionalLogic enigma5 = new PropositionalLogic();
+				enigma5.IncrementActivations();
+				if(cbxEscolha.getSelectedIndex() == 2) {
+					enigma5.IncrementRightAnsweres();
+					lblNewLabel.setText("Desarmado");
+				}else {
+					enigma5.IncrementWrongAnsweres();
+				}
+		
+			}});
 		btnSlecionar.setBackground(new Color(255, 255, 0));
 		btnSlecionar.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnSlecionar.setForeground(new Color(255, 0, 0));
 		btnSlecionar.setBounds(156, 196, 168, 29);
 		add(btnSlecionar);
+		
+		
 
 	}
 	private class SwingAction extends AbstractAction {

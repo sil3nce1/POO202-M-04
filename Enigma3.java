@@ -1,4 +1,4 @@
-package Intregavel2;
+package Modulo_Completo;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ButtonGroup;
 
 public class Enigma3 extends JPanel {
 
@@ -58,16 +59,37 @@ public class Enigma3 extends JPanel {
 		rdbtnIncerta.setBounds(303, 178, 91, 29);
 		add(rdbtnIncerta);
 		
-		JButton btnDesativar = new JButton("Desativar");
+		
+		ButtonGroup bg = new ButtonGroup();
+		bg.add( rdbtnVerdadeira);
+		bg.add(rdbtnFalsa);
+		bg.add(rdbtnIncerta);
+		
+		JLabel lblNewLabel = new JLabel("Armado");
+		lblNewLabel.setBounds(360, 11, 48, 14);
+		add(lblNewLabel);
+		
+		
+		JButton btnDesativar = new JButton("Desarmar");
 		btnDesativar.setForeground(new Color(255, 0, 0));
 		btnDesativar.setBackground(Color.YELLOW);
 		btnDesativar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Predicados enigma3 = new Predicados();
+				enigma3.IncrementActivations();
+				if(rdbtnFalsa.isSelected()) {
+					enigma3.IncrementRightAnsweres();
+					lblNewLabel.setText("Desarmado");
+				}else {
+					enigma3.IncrementWrongAnsweres();
+				}
 			}
 		});
 		btnDesativar.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnDesativar.setBounds(45, 235, 363, 29);
 		add(btnDesativar);
+		
+		
 
 	}
 

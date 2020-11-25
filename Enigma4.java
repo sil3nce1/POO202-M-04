@@ -1,4 +1,5 @@
-package Intregavel2;
+package Modulo_Completo;
+
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -10,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
+import javax.swing.ButtonGroup;
 
 public class Enigma4 extends JPanel {
 
@@ -55,15 +57,38 @@ public class Enigma4 extends JPanel {
 		rdbtnModusTollens.setBounds(226, 164, 155, 29);
 		add(rdbtnModusTollens);
 		
-		JButton btnDesativar = new JButton("Desativar");
+		ButtonGroup bg = new ButtonGroup();
+		bg.add(rdbtnModusPonens);
+		bg.add(rdbtnModusTollens);
+		
+		JLabel lblNewLabel = new JLabel("Armado");
+		lblNewLabel.setBounds(10, 21, 48, 14);
+		add(lblNewLabel);
+		
+		
+		
+		
+		JButton btnDesativar = new JButton("Desarmado");
 		btnDesativar.setIcon(new ImageIcon(Enigma4.class.getResource("/Imagens/anginho.jpg")));
 		btnDesativar.setFont(new Font("Tahoma", Font.BOLD, 25));
 		btnDesativar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				PropositionalLogic enigma4 = new PropositionalLogic();
+				enigma4.IncrementActivations();
+				if(rdbtnModusPonens.isSelected()) {
+					enigma4.IncrementRightAnsweres();
+					lblNewLabel.setText("Desarmado");
+				}else {
+					enigma4.IncrementWrongAnsweres();
+				}
+				
 			}
 		});
 		btnDesativar.setBounds(73, 220, 332, 69);
 		add(btnDesativar);
+		
+		
+		
 
 	}
 
