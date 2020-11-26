@@ -1,79 +1,114 @@
-package main;
+
 
 import javax.swing.JPanel;
 
+import UI.*;
+
 public class Enigma 
 {
-	protected int executions;
-	protected int wrongAnswers;
-	protected int rightAnswers;
-	protected int activations;
-	protected EnigmaLevel level;
+	protected int executionsCount;
+	protected int wrongAnswersCount;
+	protected int rightAnswersCount;
+	protected boolean defused = false;
+	protected boolean flagErro = false;
+	private transient JPanel panel;
 	
+	private EnigmaLevel level;
 	
-	public Enigma(int executions, int wrongAnswers, int rightAnswers, int activations, EnigmaLevel level) 
-	{
+	public Enigma(JPanel p) {
+	
+		this.panel = p;
+	}
+	
+	public Enigma(int executions, int wrongAnswers, EnigmaLevel level) {
+		
 		this.setExecutionsCount(executions);
 		this.setWrongAnswersCount(wrongAnswers);
-		this.setRightAnswersCount(rightAnswers);
-		this.setActivationsCount(activations);
-		this.setEnigmaLevel(level);
+	
+		this.setLevel(level);
 	}
 	
-	public Enigma() {}
 	
 	
-	public int getExecutionsCount() 
-	{
-		return this.executions;
+	
+	
+	public int getExecutionsCount() {
+		return executionsCount;
 	}
-	
-	public void setExecutionsCount(int executions)
-	{
-		this.executions = executions;
+
+
+	public void setExecutionsCount(int executionsCount) {
+		this.executionsCount = executionsCount;
 	}
-	
-	public int getWrongAnswersCount() 
-	{
-		return this.wrongAnswers;
+
+
+	public int getWrongAnswersCount() {
+		return wrongAnswersCount;
 	}
-	
-	public void setWrongAnswersCount(int wrongAnswers)
-	{
-		this.wrongAnswers = wrongAnswers;
+
+
+	public void setWrongAnswersCount(int wrongAnswersCount) {
+		this.wrongAnswersCount = wrongAnswersCount;
 	}
-	
-	public int getActivationCount() 
-	{
-		return this.activations;
+
+
+	public int getRightAnswersCount() {
+		return rightAnswersCount;
 	}
-	
-	public void setActivationsCount(int activations)
-	{
-		this.activations = activations;
+
+
+	public void setRightAnswersCount(int rightAnswersCount) {
+		this.rightAnswersCount = rightAnswersCount;
 	}
-	
-	public int getRightAnswersCount() 
-	{
-		return this.rightAnswers;
+
+
+	public EnigmaLevel getEnigmaLevel() {
+		return level;
 	}
-	
-	public void setRightAnswersCount(int rightAnswers)
-	{
-		this.rightAnswers = rightAnswers;
-	}
-	
-	public EnigmaLevel getEnigmaLevel() 
-	{
-		return this.level;
-	}
-	
-	public void setEnigmaLevel(EnigmaLevel level)
-	{
+
+
+	public void setLevel(EnigmaLevel level) {
 		this.level = level;
 	}
 	
-	public JPanel getPanel(int index) {}
 	
+	
+	public void IncrementWrongAnsweres() {
+		this.wrongAnswersCount ++;
+		this.flagErro = true;
+		
+	}
+	
+	public void IncrementRightAnsweres() {
+		this.defuse();
+		this.rightAnswersCount++;
+	}
+	
+	public JPanel getPanel() {
+		return panel;
+		}
+	
+
+	public void defuse() {
+		defused = true;
+	}
+	
+	public  boolean getDefused() {
+		return defused;
+	}
+	public boolean getFlagErro() {
+		return flagErro;
+	}
+	public void setFlagErro() {
+		flagErro = false;
+	}
 	
 }
+	
+	
+	
+	
+	
+	
+	
+

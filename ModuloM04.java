@@ -1,58 +1,121 @@
-package Intregavel2;
 
-public class ModuloM04 implements ModuleInterface  {
+import java.util.ArrayList;
 
-	//Atributos
-	private boolean isDefused;
-	private int howManyActivations;
-	private int howManyExecutions;
-	private int howManyRigthAnswers;
-	private int howManyWrongAnswers;
+import javax.swing.JPanel;
+
+import Modulo_Completo.*;
+
+import UI.*;
+
+
+public class ModuloM04 implements ModuleInterface {
+	
+	private BombInterface bomb;
+	private int activations;
+	private Enigma e;
+	private int index;
 	
 	
-    //container
-	String[] enigma = new String[6];
-	
-	//Construtor
-	public ModuloM04(boolean isDefused, int howManyActivations, int howManyExecutions, int howManyRigthAnswers,
-			int howManyWrongAnswers) {
-		super();
-		this.setDefused (isDefused);
-		this.setHowManyActivations (howManyActivations);
-		this.setHowManyExecutions (howManyExecutions);
-		this.setHowManyRigthAnswers (howManyRigthAnswers);
-		this.setHowManyWrongAnswers (howManyWrongAnswers);
+	public  ModuloM04() {
+		this.activations++;
 	}
 	
-	//Metodos
-	public boolean isDefused() {
-			return isDefused;
-		}
-	public void setDefused(boolean isDefused) {
-		this.isDefused = isDefused;
+	
+	
+	
+	
+	public void attachBomb(BombInterface bomb) {
+		this.bomb = bomb;
 	}
+
+
+	@Override
+	public void attach(BombInterface arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public EnigmaLevel getEnigmaLevel(byte arg0) {
+		// TODO Auto-generated method stub
+		return this.e.getEnigmaLevel();
+	}
+
+
+	@Override
 	public int getHowManyActivations() {
-		return howManyActivations;
+		// TODO Auto-generated method stub
+		return 0;
 	}
-	public void setHowManyActivations(int howManyActivations) {
-		this.howManyActivations = howManyActivations;
+
+
+	@Override
+	public int getHowManyExecutions(byte arg0) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
-	public int getHowManyExecutions() {
-		return howManyExecutions;
+
+
+	@Override
+	public int getHowManyRightAnswers(byte arg0) {
+		// TODO Auto-generated method stub
+		return e.getRightAnswersCount();
 	}
-	public void setHowManyExecutions(int howManyExecutions) {
-		this.howManyExecutions = howManyExecutions;
+
+
+	@Override
+	public int getHowManyWrongAnswers(byte arg0) {
+		// TODO Auto-generated method stub
+		return e.getWrongAnswersCount();
 	}
-	public int getHowManyRigthAnswers() {
-		return howManyRigthAnswers;
+
+
+	@Override
+	public JPanel getPanel(byte arg0) {
+		// TODO Auto-geswitch(index) {
+switch(arg0) {
+	case 1:
+		e = new Enigma(new Enigma1(e));
+		
+		break;
+	case 2:
+		e = new Enigma(new Enigma2());
+		break;
+	case 3:
+		e = new Enigma(new Enigma3());
+		break;
+	case 4:
+		e = new Enigma(new Enigma4());
+		break;
+	case 5:
+		e = new Enigma(new Enigma5());
+		break;
+	case 6:
+		e = new Enigma(new Enigma6());
+		break;
+}
+		
+	return e.getPanel();
 	}
-	public void setHowManyRigthAnswers(int howManyRigthAnswers) {
-		this.howManyRigthAnswers = howManyRigthAnswers;
+
+	
+	public boolean Errou() {
+		if(e.getFlagErro()) {
+			restaureFlag();
+			return true;
+		}
+		return false;
 	}
-	public int getHowManyWrongAnswers() {
-		return howManyWrongAnswers;
+	public void restaureFlag() {
+		e.setFlagErro();
 	}
-	public void setHowManyWrongAnswers(int howManyWrongAnswers) {
-		this.howManyWrongAnswers = howManyWrongAnswers;
+	@Override
+	public boolean isDefused() {
+		// TODO Auto-generated method stub
+		if(e.defused) {
+			return true;
+		}
+		return false;
 	}
 }

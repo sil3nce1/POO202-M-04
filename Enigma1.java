@@ -1,4 +1,5 @@
-package Modulo_Completo;
+
+
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -22,11 +23,14 @@ public class Enigma1 extends JPanel {
 	private JRadioButton rdbtnNãoFazSentido;
 	private JRadioButton rdbtnNãoFazSentido_1;
 	private JRadioButton rdbtnFalso_1;
+	private Enigma enigma;
+	public boolean isRight;
 
 	/**
 	 * Create the panel.
 	 */
-	public Enigma1() {
+	public Enigma1(Enigma e) {
+		this.setEnigma(e);
 		addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent arg0) {
@@ -72,17 +76,17 @@ public class Enigma1 extends JPanel {
 		lblNewLabel.setBounds(330, 24, 48, 14);
 		add(lblNewLabel);
 		
+	
 		
 		JButton btnNewButton = new JButton("Desarmar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ReasoningLogic enigma1 = new ReasoningLogic();
-				enigma1.IncrementActivations();
+				
 				if(rdbtnFalso_1.isSelected()) {
-					enigma1.IncrementRightAnsweres();
+					right();
 					lblNewLabel.setText("Desarmado");
 				}else {
-					enigma1.IncrementWrongAnsweres();
+					wrong();
 				}
 				
 			}
@@ -94,4 +98,19 @@ public class Enigma1 extends JPanel {
 		
 
 	}
+	public void setIsRight(boolean t) {
+		
+		this.isRight = t;
+	}
+	
+	public void setEnigma(Enigma e) {
+		this.enigma = e;
+	}
+	public void wrong() {
+		this.enigma.IncrementWrongAnsweres();
+	}
+	public void right() {
+		this.enigma.IncrementRightAnsweres();
+	}
+		
 }

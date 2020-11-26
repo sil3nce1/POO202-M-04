@@ -1,8 +1,9 @@
-package Modulo_Completo;
 
 
-public enum EnigmaLevel {
-	HARD, 
-	MEDIUM, 
-	EASY;
+public class EnigmaLevel {
+	private String level;
+	
+	public EnigmaLevel(String e) {
+		this.level = e;
+	}
 }
