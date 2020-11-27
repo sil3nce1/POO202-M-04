@@ -1,13 +1,14 @@
-package Modulo_Completo;
+
+import javax.swing.JPanel;
 
 public class PropositionalLogic extends Enigma {
 	
-	public PropositionalLogic() {
-		
+	public PropositionalLogic(JPanel p) {
+		super(p);
 	}
 	
-	public PropositionalLogic(int executions, int wrongAnswers, int activations, EnigmaLevel level) {
-		super(executions,wrongAnswers,activations,level);
+	public PropositionalLogic(int executions, int wrongAnswers, EnigmaLevel level) {
+		super(executions,wrongAnswers,level);
 	}
 
 }

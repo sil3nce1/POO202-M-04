@@ -1,13 +1,14 @@
-package Modulo_Completo;
+
+import javax.swing.JPanel;
 
 public class Predicados extends Enigma {
 	
-	public Predicados() {
-		
+	public Predicados(JPanel p) {
+		super(p);
 	}
 	
-	public Predicados(int executions, int wrongAnswers, int activations, EnigmaLevel level) {
-		super(executions,wrongAnswers,activations,level);
+	public Predicados(int executions, int wrongAnswers,  EnigmaLevel level) {
+		super(executions,wrongAnswers,level);
 	}
 
 }

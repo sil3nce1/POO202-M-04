@@ -1,15 +1,18 @@
-package Modulo_Completo;
+
+import javax.swing.JPanel;
 
 public class ReasoningLogic extends Enigma {
 	
-	public ReasoningLogic(){	
-		super();
+	public ReasoningLogic(JPanel p) {
+		super(p);
 	}
 	
-	public ReasoningLogic(int executions, int wrongAnswers, int activations, EnigmaLevel level)
+	public ReasoningLogic(int executions, int wrongAnswers, EnigmaLevel level)
 	{
-		super(executions, wrongAnswers, activations, level);
+		super(executions, wrongAnswers, level);
 	}
+	
+	
 	
 	
 	
