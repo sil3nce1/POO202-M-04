@@ -10,10 +10,15 @@ public class Enigma implements Serializable
 	protected int wrongAnswersCount;
 	protected int rightAnswersCount;
 	protected boolean defused = false;
-	protected boolean flagErro = false;
 	private transient JPanel panel;
+	private ModuloM04 modulo;
 	
 	private EnigmaLevel level;
+	
+	
+	public Enigma() {
+		
+	}
 	
 	public Enigma(JPanel p) {
 	
@@ -29,7 +34,9 @@ public class Enigma implements Serializable
 	}
 	
 	
-	
+	public void attach(ModuloM04 m) {
+		this.modulo = m;
+	}
 	
 	
 	public int getExecutionsCount() {
@@ -75,13 +82,14 @@ public class Enigma implements Serializable
 	
 	public void IncrementWrongAnsweres() {
 		this.wrongAnswersCount ++;
-		this.flagErro = true;
+		this.modulo.Errou();
 		
 	}
 	
 	public void IncrementRightAnsweres() {
-		this.defuse();
 		this.rightAnswersCount++;
+		this.defuse();
+		
 	}
 	
 	public JPanel getPanel() {
@@ -93,17 +101,18 @@ public class Enigma implements Serializable
 	}
 	public void defuse() {
 		defused = true;
+		
 	}
 	
 	public  boolean getDefused() {
 		return defused;
 	}
-	public boolean getFlagErro() {
-		return flagErro;
+	
+	public void setPanel(JPanel p) {
+		this.panel = p;
 	}
-	public void setFlagErro() {
-		flagErro = false;
-	}
+	
+	
 	
 }
 	

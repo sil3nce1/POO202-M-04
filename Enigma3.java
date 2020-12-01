@@ -18,12 +18,12 @@ import javax.swing.ButtonGroup;
 public class Enigma3 extends JPanel {
 		
 		private Enigma enigma;
-		public boolean isRight;
+		
 	/**
 	 * Create the panel.
 	 */
-	public Enigma3() {
-		this.setEnigma();
+	public Enigma3(Enigma e) {
+		this.setEnigma(e);
 		enigma.setDefuse(false);
 		setBackground(new Color(0, 255, 255));
 		setLayout(null);
@@ -86,12 +86,12 @@ public class Enigma3 extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnFalsa.isSelected()) {
 					right();
-					serializeObject();
+					
 					
 					lblNewLabel.setText("Desarmado");
 				}else {
 					wrong();
-					serializeObject();
+					
 				}
 			}});
 		btnDesativar.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -102,31 +102,10 @@ public class Enigma3 extends JPanel {
 
 	}
 	
-	public void serializeObject() {
-		try {
-		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("enigma3.ser"));
-		oos.writeObject(this.enigma);
-		}catch(IOException z) {
-			z.printStackTrace();
-		}
-	}
 	
 	
-	
-	public void setIsRight(boolean t) {
-		
-		this.isRight = t;
-	}
-	
-	public void setEnigma() {
-		try {
-			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("enigma3.ser"));
-			this.enigma = (Enigma) ois.readObject();
-		}catch(IOException z){
-			z.printStackTrace();
-		}catch(ClassNotFoundException z) {
-			z.printStackTrace();
-		}
+	public void setEnigma(Enigma e) {
+		this.enigma = e;
 	}
 	public void wrong() {
 		this.enigma.IncrementWrongAnsweres();

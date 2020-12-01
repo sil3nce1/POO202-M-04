@@ -25,13 +25,12 @@ public class Enigma1 extends JPanel {
 	private JRadioButton rdbtnNãoFazSentido_1;
 	private JRadioButton rdbtnFalso_1;
 	private Enigma enigma;
-	public boolean isRight;
 
 	/**
 	 * Create the panel.
 	 */
-	public Enigma1() {
-		this.setEnigma();
+	public Enigma1(Enigma e) {
+		this.setEnigma(e);
 		enigma.setDefuse(false);
 		addFocusListener(new FocusAdapter() {
 			@Override
@@ -86,12 +85,12 @@ public class Enigma1 extends JPanel {
 				
 				if(rdbtnFalso_1.isSelected()) {
 					right();
-					serializeObject();
+				
 					
 					lblNewLabel.setText("Desarmado");
 				}else {
 					wrong();
-					serializeObject();
+					
 				}
 				
 			}
@@ -103,33 +102,10 @@ public class Enigma1 extends JPanel {
 		
 
 	}
+
 	
-	
-	public void serializeObject() {
-		try {
-		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("enigma1.ser"));
-		oos.writeObject(this.enigma);
-		}catch(IOException z) {
-			z.printStackTrace();
-		}
-	}
-	
-	
-	
-	public void setIsRight(boolean t) {
-		
-		this.isRight = t;
-	}
-	
-	public void setEnigma() {
-		try {
-			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("enigma1.ser"));
-			this.enigma = (Enigma) ois.readObject();
-		}catch(IOException z){
-			z.printStackTrace();
-		}catch(ClassNotFoundException z) {
-			z.printStackTrace();
-		}
+	public void setEnigma(Enigma e) {
+		this.enigma = e;
 	}
 	public void wrong() {
 		this.enigma.IncrementWrongAnsweres();

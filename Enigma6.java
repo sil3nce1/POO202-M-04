@@ -31,12 +31,12 @@ import javax.swing.JFormattedTextField;
 public class Enigma6 extends JPanel {
 
 		private Enigma enigma;
-		public boolean isRight;
+		
 	/**
 	 * Create the panel.
 	 */
-	public Enigma6() {
-		this.setEnigma();
+	public Enigma6(Enigma e) {
+		this.setEnigma(e);
 		enigma.setDefuse(false);
 		setBorder(new LineBorder(new Color(0, 0, 0), 15));
 		setBackground(new Color(135, 206, 250));
@@ -111,10 +111,10 @@ public class Enigma6 extends JPanel {
 			if(  cBxPrimeiraLinha.getSelectedIndex() == 5 && cBxPrimeiraLinha2.getSelectedIndex() == 5 &&
 					cBxPrimeiraLinha3.getSelectedIndex() == 4 && cBxPrimeiraLinha4.getSelectedIndex() == 2) {
 				right();
-				serializeObject();
+				
 			}else {
 				wrong();
-				serializeObject();
+				
 			}
 				
 			}
@@ -130,34 +130,10 @@ public class Enigma6 extends JPanel {
 	}
 	
 	
+
 	
-	
-	
-	public void serializeObject() {
-		try {
-		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("enigma6.ser"));
-		oos.writeObject(this.enigma);
-		}catch(IOException z) {
-			z.printStackTrace();
-		}
-	}
-	
-	
-	
-	public void setIsRight(boolean t) {
-		
-		this.isRight = t;
-	}
-	
-	public void setEnigma() {
-		try {
-			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("enigma6.ser"));
-			this.enigma = (Enigma) ois.readObject();
-		}catch(IOException z){
-			z.printStackTrace();
-		}catch(ClassNotFoundException z) {
-			z.printStackTrace();
-		}
+	public void setEnigma(Enigma e) {
+		this.enigma = e;
 	}
 	public void wrong() {
 		this.enigma.IncrementWrongAnsweres();
