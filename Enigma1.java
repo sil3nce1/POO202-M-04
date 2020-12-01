@@ -16,6 +16,7 @@ import java.awt.Button;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+import java.io.*;
 
 public class Enigma1 extends JPanel {
 	private JRadioButton rdbtnVerdadeiro;
@@ -29,8 +30,9 @@ public class Enigma1 extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Enigma1(Enigma e) {
-		this.setEnigma(e);
+	public Enigma1() {
+		this.setEnigma();
+		enigma.setDefuse(false);
 		addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent arg0) {
@@ -84,9 +86,12 @@ public class Enigma1 extends JPanel {
 				
 				if(rdbtnFalso_1.isSelected()) {
 					right();
+					serializeObject();
+					
 					lblNewLabel.setText("Desarmado");
 				}else {
 					wrong();
+					serializeObject();
 				}
 				
 			}
@@ -98,13 +103,33 @@ public class Enigma1 extends JPanel {
 		
 
 	}
+	
+	
+	public void serializeObject() {
+		try {
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("enigma1.ser"));
+		oos.writeObject(this.enigma);
+		}catch(IOException z) {
+			z.printStackTrace();
+		}
+	}
+	
+	
+	
 	public void setIsRight(boolean t) {
 		
 		this.isRight = t;
 	}
 	
-	public void setEnigma(Enigma e) {
-		this.enigma = e;
+	public void setEnigma() {
+		try {
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("enigma1.ser"));
+			this.enigma = (Enigma) ois.readObject();
+		}catch(IOException z){
+			z.printStackTrace();
+		}catch(ClassNotFoundException z) {
+			z.printStackTrace();
+		}
 	}
 	public void wrong() {
 		this.enigma.IncrementWrongAnsweres();
@@ -112,5 +137,7 @@ public class Enigma1 extends JPanel {
 	public void right() {
 		this.enigma.IncrementRightAnsweres();
 	}
+	
+	
 		
 }

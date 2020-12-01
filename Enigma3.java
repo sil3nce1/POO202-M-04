@@ -1,4 +1,4 @@
-package Modulo_Completo;
+
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -7,15 +7,24 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
 
 public class Enigma3 extends JPanel {
-
+		
+		private Enigma enigma;
+		public boolean isRight;
 	/**
 	 * Create the panel.
 	 */
 	public Enigma3() {
+		this.setEnigma();
+		enigma.setDefuse(false);
 		setBackground(new Color(0, 255, 255));
 		setLayout(null);
 		
@@ -75,16 +84,16 @@ public class Enigma3 extends JPanel {
 		btnDesativar.setBackground(Color.YELLOW);
 		btnDesativar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Predicados enigma3 = new Predicados();
-				enigma3.IncrementActivations();
 				if(rdbtnFalsa.isSelected()) {
-					enigma3.IncrementRightAnsweres();
+					right();
+					serializeObject();
+					
 					lblNewLabel.setText("Desarmado");
 				}else {
-					enigma3.IncrementWrongAnsweres();
+					wrong();
+					serializeObject();
 				}
-			}
-		});
+			}});
 		btnDesativar.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnDesativar.setBounds(45, 235, 363, 29);
 		add(btnDesativar);
@@ -92,5 +101,40 @@ public class Enigma3 extends JPanel {
 		
 
 	}
+	
+	public void serializeObject() {
+		try {
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("enigma3.ser"));
+		oos.writeObject(this.enigma);
+		}catch(IOException z) {
+			z.printStackTrace();
+		}
+	}
+	
+	
+	
+	public void setIsRight(boolean t) {
+		
+		this.isRight = t;
+	}
+	
+	public void setEnigma() {
+		try {
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("enigma3.ser"));
+			this.enigma = (Enigma) ois.readObject();
+		}catch(IOException z){
+			z.printStackTrace();
+		}catch(ClassNotFoundException z) {
+			z.printStackTrace();
+		}
+	}
+	public void wrong() {
+		this.enigma.IncrementWrongAnsweres();
+	}
+	public void right() {
+		this.enigma.IncrementRightAnsweres();
+	}
+	
+	
 
 }

@@ -1,4 +1,4 @@
-package Modulo_Completo;
+
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -13,15 +13,19 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.ButtonGroup;
+import java.io.*;
 
-public class Enigma2 extends JPanel {
+public class Enigma2 extends JPanel  {
 	
-	
+	private Enigma enigma;
+	public boolean isRight;
 	
 	/**
 	 * Create the panel.
 	 */
 	public Enigma2() {
+		this.setEnigma();
+		enigma.setDefuse(false);
 		setBackground(new Color(255, 20, 147));
 		setForeground(new Color(255, 0, 255));
 		setLayout(null);
@@ -80,23 +84,59 @@ public class Enigma2 extends JPanel {
 		JButton btnNewButton = new JButton("Desarmar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ReasoningLogic enigma2 = new ReasoningLogic();
-				enigma2.IncrementActivations();
 				if(rdbtnNewRadioButton.isSelected()) {
-					enigma2.IncrementRightAnsweres();
+					right();
+					serializeObject();
+					
 					lblNewLabel.setText("Desarmado");
 				}else {
-					enigma2.IncrementWrongAnsweres();
+					wrong();
+					serializeObject();
 				}
+				
 			}
 		});
 		btnNewButton.setIcon(new ImageIcon(Enigma2.class.getResource("/Imagens/hamburger1.jpg")));
 		btnNewButton.setBounds(15, 77, 110, 202);
 		add(btnNewButton);
 		
+	}
+	
+	public void serializeObject() {
+		try {
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("enigma2.ser"));
+		oos.writeObject(this.enigma);
+		}catch(IOException z) {
+			z.printStackTrace();
+		}
+	}
+	
+	
+	
+	public void setIsRight(boolean t) {
+		
+		this.isRight = t;
+	}
+	
+	public void setEnigma() {
+		try {
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("enigma2.ser"));
+			this.enigma = (Enigma) ois.readObject();
+		}catch(IOException z){
+			z.printStackTrace();
+		}catch(ClassNotFoundException z) {
+			z.printStackTrace();
+		}
+	}
+	public void wrong() {
+		this.enigma.IncrementWrongAnsweres();
+	}
+	public void right() {
+		this.enigma.IncrementRightAnsweres();
+	}
+	
 	
 		
-		
-
-	}
 }
+
+

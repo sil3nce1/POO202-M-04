@@ -1,11 +1,9 @@
 
 import java.util.ArrayList;
-
 import javax.swing.JPanel;
-
 import Modulo_Completo.*;
-
 import UI.*;
+import java.io.*;
 
 
 public class ModuloM04 implements ModuleInterface {
@@ -76,23 +74,106 @@ public class ModuloM04 implements ModuleInterface {
 		// TODO Auto-geswitch(index) {
 switch(arg0) {
 	case 1:
-		e = new Enigma(new Enigma1(e));
-		
+		try {
+			ObjectInputStream ois = new ObjectInputStream( new FileInputStream("enigma1.ser"));
+			this.e = (Enigma) ois.readObject();
+		}catch(FileNotFoundException z) {
+		this.e = new Enigma(new Enigma1());
+			try {
+			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("enimga1.ser"));
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
 		break;
 	case 2:
-		e = new Enigma(new Enigma2());
+		try {
+		ObjectInputStream ois = new ObjectInputStream( new FileInputStream("enigma2.ser"));
+		this.e = (Enigma) ois.readObject();
+	}catch(FileNotFoundException z) {
+	this.e = new Enigma(new Enigma2());
+		try {
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("enimga2.ser"));
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}catch(ClassNotFoundException e) {
+		e.printStackTrace();
+	}catch(IOException e) {
+		e.printStackTrace();
+	}
 		break;
 	case 3:
-		e = new Enigma(new Enigma3());
+		try {
+			ObjectInputStream ois = new ObjectInputStream( new FileInputStream("enigma3.ser"));
+			this.e = (Enigma) ois.readObject();
+		}catch(FileNotFoundException z) {
+		this.e = new Enigma(new Enigma3());
+			try {
+			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("enimga3.ser"));
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
 		break;
 	case 4:
-		e = new Enigma(new Enigma4());
+		try {
+			ObjectInputStream ois = new ObjectInputStream( new FileInputStream("enigma4.ser"));
+			this.e = (Enigma) ois.readObject();
+		}catch(FileNotFoundException z) {
+		this.e = new Enigma(new Enigma4());
+			try {
+			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("enimga4.ser"));
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
 		break;
 	case 5:
-		e = new Enigma(new Enigma5());
+		try {
+			ObjectInputStream ois = new ObjectInputStream( new FileInputStream("enigma5.ser"));
+			this.e = (Enigma) ois.readObject();
+		}catch(FileNotFoundException z) {
+		this.e = new Enigma(new Enigma5());
+			try {
+			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("enimga5.ser"));
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
 		break;
 	case 6:
-		e = new Enigma(new Enigma6());
+		try {
+			ObjectInputStream ois = new ObjectInputStream( new FileInputStream("enigma6.ser"));
+			this.e = (Enigma) ois.readObject();
+		}catch(FileNotFoundException z) {
+		this.e = new Enigma(new Enigma6());
+			try {
+			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("enimga6.ser"));
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
 		break;
 }
 		

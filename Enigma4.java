@@ -1,4 +1,4 @@
-package Modulo_Completo;
+
 
 
 import javax.swing.JPanel;
@@ -7,6 +7,11 @@ import java.awt.Font;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.UIManager;
@@ -15,10 +20,14 @@ import javax.swing.ButtonGroup;
 
 public class Enigma4 extends JPanel {
 
+		private Enigma enigma;
+		public boolean isRight;
 	/**
 	 * Create the panel.
 	 */
 	public Enigma4() {
+		this.setEnigma();
+		enigma.setDefuse(false);
 		setBackground(Color.YELLOW);
 		setForeground(Color.MAGENTA);
 		setLayout(null);
@@ -73,14 +82,17 @@ public class Enigma4 extends JPanel {
 		btnDesativar.setFont(new Font("Tahoma", Font.BOLD, 25));
 		btnDesativar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PropositionalLogic enigma4 = new PropositionalLogic();
-				enigma4.IncrementActivations();
 				if(rdbtnModusPonens.isSelected()) {
-					enigma4.IncrementRightAnsweres();
+					right();
+					serializeObject();
+					
 					lblNewLabel.setText("Desarmado");
 				}else {
-					enigma4.IncrementWrongAnsweres();
+					wrong();
+					serializeObject();
 				}
+				
+			
 				
 			}
 		});
@@ -90,6 +102,39 @@ public class Enigma4 extends JPanel {
 		
 		
 
+	}
+	
+	public void serializeObject() {
+		try {
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("enigma4.ser"));
+		oos.writeObject(this.enigma);
+		}catch(IOException z) {
+			z.printStackTrace();
+		}
+	}
+	
+	
+	
+	public void setIsRight(boolean t) {
+		
+		this.isRight = t;
+	}
+	
+	public void setEnigma() {
+		try {
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("enigma4.ser"));
+			this.enigma = (Enigma) ois.readObject();
+		}catch(IOException z){
+			z.printStackTrace();
+		}catch(ClassNotFoundException z) {
+			z.printStackTrace();
+		}
+	}
+	public void wrong() {
+		this.enigma.IncrementWrongAnsweres();
+	}
+	public void right() {
+		this.enigma.IncrementRightAnsweres();
 	}
 
 }

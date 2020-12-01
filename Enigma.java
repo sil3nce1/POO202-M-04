@@ -1,10 +1,10 @@
 
 
 import javax.swing.JPanel;
-
 import UI.*;
+import java.io.*;
 
-public class Enigma 
+public class Enigma implements Serializable
 {
 	protected int executionsCount;
 	protected int wrongAnswersCount;
@@ -88,7 +88,9 @@ public class Enigma
 		return panel;
 		}
 	
-
+	public void setDefuse(boolean b) {
+		defused = b;
+	}
 	public void defuse() {
 		defused = true;
 	}

@@ -1,4 +1,4 @@
-package Modulo_Completo;
+
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -31,14 +31,23 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class Enigma5 extends JPanel {
 	private final Action action = new SwingAction();
-
+		
+		private Enigma enigma;
+		public boolean isRight;
 	/**
 	 * Create the panel.
 	 */
 	public Enigma5() {
+		this.setEnigma();
+		enigma.setDefuse(false);
 		setBorder(new LineBorder(new Color(255, 0, 0), 10));
 		setForeground(Color.YELLOW);
 		setBackground(new Color(0, 0, 0));
@@ -65,22 +74,23 @@ public class Enigma5 extends JPanel {
 		add(lblIndiqueANumerao);
 		
 		JLabel lblNewLabel = new JLabel("Armado");
-		lblNewLabel.setBounds(22, 28, 48, 14);
+		lblNewLabel.setBounds(29, 34, 48, 14);
 		add(lblNewLabel);
 		
 		JButton btnSlecionar = new JButton("Live our Die");
 		btnSlecionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				PropositionalLogic enigma5 = new PropositionalLogic();
-				enigma5.IncrementActivations();
 				if(cbxEscolha.getSelectedIndex() == 2) {
-					enigma5.IncrementRightAnsweres();
+					right();
+					serializeObject();
+					
 					lblNewLabel.setText("Desarmado");
 				}else {
-					enigma5.IncrementWrongAnsweres();
+					wrong();
+					serializeObject();
 				}
-		
-			}});
+			}
+		});
 		btnSlecionar.setBackground(new Color(255, 255, 0));
 		btnSlecionar.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnSlecionar.setForeground(new Color(255, 0, 0));
@@ -97,5 +107,38 @@ public class Enigma5 extends JPanel {
 		}
 		public void actionPerformed(ActionEvent e) {
 		}
+	}
+	
+	public void serializeObject() {
+		try {
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("enigma5.ser"));
+		oos.writeObject(this.enigma);
+		}catch(IOException z) {
+			z.printStackTrace();
+		}
+	}
+	
+	
+	
+	public void setIsRight(boolean t) {
+		
+		this.isRight = t;
+	}
+	
+	public void setEnigma() {
+		try {
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("enigma5.ser"));
+			this.enigma = (Enigma) ois.readObject();
+		}catch(IOException z){
+			z.printStackTrace();
+		}catch(ClassNotFoundException z) {
+			z.printStackTrace();
+		}
+	}
+	public void wrong() {
+		this.enigma.IncrementWrongAnsweres();
+	}
+	public void right() {
+		this.enigma.IncrementRightAnsweres();
 	}
 }
