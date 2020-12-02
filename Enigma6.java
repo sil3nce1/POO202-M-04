@@ -27,6 +27,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
 import javax.swing.JFormattedTextField;
+import javax.swing.ImageIcon;
 
 public class Enigma6 extends JPanel {
 
@@ -44,7 +45,7 @@ public class Enigma6 extends JPanel {
 		setLayout(null);
 		
 		JLabel lblEnunciado = new JLabel("(p  \u2227  q)  \u2192  (p  v  q) ");
-		lblEnunciado.setBounds(256, 32, 167, 20);
+		lblEnunciado.setBounds(280, 49, 143, 20);
 		add(lblEnunciado);
 		
 		JList list = new JList();
@@ -55,7 +56,7 @@ public class Enigma6 extends JPanel {
 		cBxPrimeiraLinha.setFont(new Font("Tahoma", Font.BOLD, 16));
 		cBxPrimeiraLinha.setForeground(Color.BLUE);
 		cBxPrimeiraLinha.setModel(new DefaultComboBoxModel(new String[] {"Selecione linha 1", "V  V  V  F  F  F  V ", "V  V  F  V  F  V  V ", "V  F  V  V  F  V  V ", "F  V  V  V  V  F  V ", "V  V  V  V  V  V  V "}));
-		cBxPrimeiraLinha.setBounds(256, 71, 167, 26);
+		cBxPrimeiraLinha.setBounds(256, 76, 167, 26);
 		add(cBxPrimeiraLinha);
 		
 		JComboBox cBxPrimeiraLinha2 = new JComboBox();
@@ -100,7 +101,8 @@ public class Enigma6 extends JPanel {
 		add(lblTabela);
 		
 		JLabel lblNewLabel = new JLabel("Armado");
-		lblNewLabel.setBounds(32, 35, 48, 14);
+		lblNewLabel.setIcon(new ImageIcon(Enigma6.class.getResource("/Imagens/armadosim.jpg")));
+		lblNewLabel.setBounds(390, 19, 33, 33);
 		add(lblNewLabel);
 		
 		JButton btnSelecao = new JButton("Ser\u00E1?");
@@ -110,6 +112,7 @@ public class Enigma6 extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			if(  cBxPrimeiraLinha.getSelectedIndex() == 5 && cBxPrimeiraLinha2.getSelectedIndex() == 5 &&
 					cBxPrimeiraLinha3.getSelectedIndex() == 4 && cBxPrimeiraLinha4.getSelectedIndex() == 2) {
+				lblNewLabel.setIcon(new ImageIcon(Enigma6.class.getResource("/Imagens/desarmadosim.jpg")));
 				right();
 				
 			}else {

@@ -73,8 +73,11 @@ public class Enigma1 extends JPanel {
 		bg.add(rdbtnFalso_1);
 		bg.add(rdbtnNãoFazSentido_1);
 		
-		JLabel lblNewLabel = new JLabel("Armado");
-		lblNewLabel.setBounds(330, 24, 48, 14);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Enigma1.class.getResource("/Imagens/armadosim.jpg")));
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setBackground(new Color(255, 0, 0));
+		lblNewLabel.setBounds(367, 11, 33, 33);
 		add(lblNewLabel);
 		
 	
@@ -84,11 +87,13 @@ public class Enigma1 extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(rdbtnFalso_1.isSelected()) {
+					lblNewLabel.setIcon(new ImageIcon(Enigma1.class.getResource("/Imagens/desarmadosim.jpg")));
 					right();
 				
 					
 					lblNewLabel.setText("Desarmado");
 				}else {
+				
 					wrong();
 					
 				}

@@ -14,6 +14,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 
 public class Enigma3 extends JPanel {
 		
@@ -75,7 +76,8 @@ public class Enigma3 extends JPanel {
 		bg.add(rdbtnIncerta);
 		
 		JLabel lblNewLabel = new JLabel("Armado");
-		lblNewLabel.setBounds(360, 11, 48, 14);
+		lblNewLabel.setIcon(new ImageIcon(Enigma3.class.getResource("/Imagens/armadosim.jpg")));
+		lblNewLabel.setBounds(360, 11, 33, 33);
 		add(lblNewLabel);
 		
 		
@@ -85,6 +87,7 @@ public class Enigma3 extends JPanel {
 		btnDesativar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnFalsa.isSelected()) {
+					lblNewLabel.setIcon(new ImageIcon(Enigma3.class.getResource("/Imagens/desarmadosim.jpg")));
 					right();
 					
 					

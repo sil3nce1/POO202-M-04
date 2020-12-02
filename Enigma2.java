@@ -32,7 +32,7 @@ public class Enigma2 extends JPanel  {
 		JLabel lblQuantosBolosPosso = new JLabel("Quantos hambuguers posso comer com a barriga vazia?");
 		lblQuantosBolosPosso.setForeground(new Color(255, 0, 255));
 		lblQuantosBolosPosso.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblQuantosBolosPosso.setBounds(15, 28, 487, 38);
+		lblQuantosBolosPosso.setBounds(15, 33, 487, 38);
 		add(lblQuantosBolosPosso);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Apenas um");
@@ -76,7 +76,8 @@ public class Enigma2 extends JPanel  {
 		
 		
 		JLabel lblNewLabel = new JLabel("Armado");
-		lblNewLabel.setBounds(347, 11, 48, 14);
+		lblNewLabel.setIcon(new ImageIcon(Enigma2.class.getResource("/Imagens/armadosim.jpg")));
+		lblNewLabel.setBounds(452, 0, 33, 37);
 		add(lblNewLabel);
 		
 		
@@ -84,6 +85,7 @@ public class Enigma2 extends JPanel  {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnNewRadioButton.isSelected()) {
+					lblNewLabel.setIcon(new ImageIcon(Enigma2.class.getResource("/Imagens/desarmadosim.jpg")));
 					right();
 					
 					

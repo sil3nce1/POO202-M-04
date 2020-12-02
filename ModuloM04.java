@@ -95,6 +95,14 @@ public class ModuloM04 implements ModuleInterface {
 	}
 
 	public void Errou() {
+		if(e.getWrongAnswersCount()%3 ==0) {
+			try {
+				ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nomeArq));
+				oos.writeObject(e);
+				}catch(IOException z) {
+					z.printStackTrace();
+				}
+		}
 		bomb.addError();
 	}
 
@@ -111,14 +119,7 @@ public class ModuloM04 implements ModuleInterface {
 			return true;
 			
 		}
-		if(e.getWrongAnswersCount()%3 ==0) {
-			try {
-				ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nomeArq));
-				oos.writeObject(e);
-				}catch(IOException z) {
-					z.printStackTrace();
-				}
-		}
+		
 		return false;
 	}
 }

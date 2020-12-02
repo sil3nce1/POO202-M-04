@@ -36,6 +36,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import javax.swing.ImageIcon;
 
 public class Enigma5 extends JPanel {
 	private final Action action = new SwingAction();
@@ -70,17 +71,26 @@ public class Enigma5 extends JPanel {
 		JLabel lblIndiqueANumerao = new JLabel("Na L\u00F3gica Proposicional\r\n a f\u00F3rmula \u00E9:");
 		lblIndiqueANumerao.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblIndiqueANumerao.setForeground(Color.GREEN);
-		lblIndiqueANumerao.setBounds(80, 28, 319, 57);
+		lblIndiqueANumerao.setBounds(27, 21, 319, 57);
 		add(lblIndiqueANumerao);
 		
 		JLabel lblNewLabel = new JLabel("Armado");
 		lblNewLabel.setBounds(29, 34, 48, 14);
 		add(lblNewLabel);
 		
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(Enigma5.class.getResource("/Imagens/armadosim.jpg")));
+		lblNewLabel_1.setBounds(374, 21, 33, 33);
+		add(lblNewLabel_1);
+		
+		
+		
 		JButton btnSlecionar = new JButton("Live our Die");
 		btnSlecionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(cbxEscolha.getSelectedIndex() == 2) {
+					lblNewLabel_1.setIcon(new ImageIcon(Enigma5.class.getResource("/Imagens/desarmadosim.jpg")));
 					right();
 					
 					
@@ -97,6 +107,7 @@ public class Enigma5 extends JPanel {
 		btnSlecionar.setBounds(156, 196, 168, 29);
 		add(btnSlecionar);
 		
+	
 		
 
 	}

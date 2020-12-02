@@ -71,7 +71,8 @@ public class Enigma4 extends JPanel {
 		bg.add(rdbtnModusTollens);
 		
 		JLabel lblNewLabel = new JLabel("Armado");
-		lblNewLabel.setBounds(10, 21, 48, 14);
+		lblNewLabel.setIcon(new ImageIcon(Enigma4.class.getResource("/Imagens/armadosim.jpg")));
+		lblNewLabel.setBounds(392, 47, 33, 33);
 		add(lblNewLabel);
 		
 		
@@ -83,6 +84,7 @@ public class Enigma4 extends JPanel {
 		btnDesativar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnModusPonens.isSelected()) {
+					lblNewLabel.setIcon(new ImageIcon(Enigma4.class.getResource("/Imagens/desarmadosim.jpg")));
 					right();
 					
 					
