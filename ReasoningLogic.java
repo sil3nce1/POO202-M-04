@@ -1,7 +1,7 @@
 
 import javax.swing.JPanel;
 
-public class ReasoningLogic extends Enigma {
+public class ReasoningLogic extends Enigma04 {
 	
 	public ReasoningLogic(JPanel p) {
 		super(p);

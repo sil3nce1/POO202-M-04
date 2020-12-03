@@ -1,7 +1,7 @@
 
 import javax.swing.JPanel;
 
-public class PropositionalLogic extends Enigma {
+public class PropositionalLogic extends Enigma04 {
 	
 	public PropositionalLogic(JPanel p) {
 		super(p);

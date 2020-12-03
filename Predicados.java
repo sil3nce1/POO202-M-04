@@ -1,7 +1,7 @@
 
 import javax.swing.JPanel;
 
-public class Predicados extends Enigma {
+public class Predicados extends Enigma04 {
 	
 	public Predicados(JPanel p) {
 		super(p);
