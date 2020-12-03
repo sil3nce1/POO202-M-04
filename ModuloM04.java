@@ -178,26 +178,33 @@ public class ModuloM04 implements ModuleInterface {
 	}
 
 	public void Errou() {
-		
+		bomb.addError();
 		try {
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nomeArq));
 			oos.writeObject(e);
 			}catch(IOException z) {
 				z.printStackTrace();
 			}
-		bomb.addError();
+		
 	}
-
-	@Override
-	public boolean isDefused() {
-		// TODO Auto-generated method stub
-		if (e.getDefuse()) {
-			try {
+	
+	public void Acertou() {
+		try {
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nomeArq));
 			oos.writeObject(e);
 			}catch(IOException z) {
 				z.printStackTrace();
 			}
+		
+	}
+
+	@Override
+	public boolean isDefused() {
+		// TODO Auto-generated method stub
+		
+		
+		if (e.getDefuse()) {
+			
 			
 			
 			return true;

@@ -88,6 +88,7 @@ public class Enigma04 implements Serializable
 	
 	public void IncrementRightAnsweres() {
 		this.rightAnswersCount++;
+		this.modulo.Acertou();
 		this.defuse();
 		
 	}
