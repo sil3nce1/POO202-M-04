@@ -90,7 +90,7 @@ public class Enigma5 extends JPanel {
 		btnSlecionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(cbxEscolha.getSelectedIndex() == 2) {
-					lblNewLabel_1.setIcon(new ImageIcon(Enigma5.class.getResource("/Imagens/desarmadosim.jpg")));
+					lblNewLabel_1.setIcon(new ImageIcon(Enigma5.class.getResource("/Imagens/desarmadosim.png")));
 					right();
 					
 					

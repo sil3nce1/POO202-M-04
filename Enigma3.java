@@ -87,7 +87,7 @@ public class Enigma3 extends JPanel {
 		btnDesativar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnFalsa.isSelected()) {
-					lblNewLabel.setIcon(new ImageIcon(Enigma3.class.getResource("/Imagens/desarmadosim.jpg")));
+					lblNewLabel.setIcon(new ImageIcon(Enigma3.class.getResource("/Imagens/desarmadosim.png")));
 					right();
 					
 					

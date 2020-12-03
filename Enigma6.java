@@ -112,7 +112,7 @@ public class Enigma6 extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			if(  cBxPrimeiraLinha.getSelectedIndex() == 5 && cBxPrimeiraLinha2.getSelectedIndex() == 5 &&
 					cBxPrimeiraLinha3.getSelectedIndex() == 4 && cBxPrimeiraLinha4.getSelectedIndex() == 2) {
-				lblNewLabel.setIcon(new ImageIcon(Enigma6.class.getResource("/Imagens/desarmadosim.jpg")));
+				lblNewLabel.setIcon(new ImageIcon(Enigma6.class.getResource("/Imagens/desarmadosim.png")));
 				right();
 				
 			}else {

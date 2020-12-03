@@ -87,7 +87,7 @@ public class Enigma1 extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(rdbtnFalso_1.isSelected()) {
-					lblNewLabel.setIcon(new ImageIcon(Enigma1.class.getResource("/Imagens/desarmadosim.jpg")));
+					lblNewLabel.setIcon(new ImageIcon(Enigma1.class.getResource("/Imagens/desarmadosim.png")));
 					right();
 				
 					

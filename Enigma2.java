@@ -85,7 +85,7 @@ public class Enigma2 extends JPanel  {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnNewRadioButton.isSelected()) {
-					lblNewLabel.setIcon(new ImageIcon(Enigma2.class.getResource("/Imagens/desarmadosim.jpg")));
+					lblNewLabel.setIcon(new ImageIcon(Enigma2.class.getResource("/Imagens/desarmadosim.png")));
 					right();
 					
 					

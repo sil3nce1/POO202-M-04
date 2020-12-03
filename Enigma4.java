@@ -84,7 +84,7 @@ public class Enigma4 extends JPanel {
 		btnDesativar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnModusPonens.isSelected()) {
-					lblNewLabel.setIcon(new ImageIcon(Enigma4.class.getResource("/Imagens/desarmadosim.jpg")));
+					lblNewLabel.setIcon(new ImageIcon(Enigma4.class.getResource("/Imagens/desarmadosim.png")));
 					right();
 					
 					
